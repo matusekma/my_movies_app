@@ -1,0 +1,35 @@
+body {
+
+}
+
+.container {
+    margin: auto auto 10px;
+}
+
+.toprow {
+    margin-top: 3%;
+}
+
+.formcontainer {
+    max-width: 50%;
+}
+
+label {
+    font-weight: bold;
+}
+
+button {
+    margin-bottom: 10%;
+}
+
+input[type="number"] {
+    width: 8em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="date"] {
+    width: 12em;
+    margin-left: auto;
+    margin-right: auto;
+}

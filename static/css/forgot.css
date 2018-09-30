@@ -1,0 +1,13 @@
+body{
+    background-color: #138496;
+}
+
+.form-gap {
+    padding-top: 5%;
+}
+
+.panel {
+    border: none;
+    border-radius: 20px;
+    background-color: #20c997;
+}
