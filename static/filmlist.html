@@ -9,11 +9,16 @@
 </head>
 <body>
 
+<a href="lists.html" class="btn btn-info" role="button"
+   aria-pressed="true">Back</a>
+
 <div class="container toprow">
     <div class="row">
         <div class="col-md-1 col-1">
+
             <h1>Comedy</h1>
         </div>
+
         <div class="col-md-10 col-10"></div>
         <div class="col-md-1 col-1">
             <a href="logout.html" class="btn btn-info btn-lg top" role="button"
@@ -23,73 +28,72 @@
 </div>
 
 <div class="container lists">
-
     <div class="row">
 
-        <div id="categorydiv" class="col-5">
+        <div class="col-5">
             <h1>To be watched</h1>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0">&nbsp;</li>
-                <li class="list-group-item justify-content-between align-items-center  border-0">
-                    <a href="#">Jumanji</a>
-                    <a href="film.html" class="btn btn-info" role="button">Watched</a>
-                    <a href="film.html" class="btn btn-danger" role="button">X</a>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    <div class="col-md-6 col-xs-6"><a href="film.html">Jumanji (példa)</a></div>
+                    <div class="col-md-5 col-xs-5"><a href="#" class="btn btn-info" role="button">Watched</a></div>
+                    <div class="col-md-1 col-xs-1"><a href="#" class="btn btn-danger" role="button">X</a></div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                    <a href="filmlist.html">Comedy (példa)</a>
-                    <span class="badge badge-primary badge-pill">2</span>
+                    <div class="col-md-6 col-xs-6"><a href="#">Ace Ventura 1</a></div>
+                    <div class="col-md-5 col-xs-5"><a href="#" class="btn btn-info" role="button">Watched</a></div>
+                    <div class="col-md-1 col-xs-1"><a href="#" class="btn btn-danger" role="button">X</a></div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                    <a href="#">Drama</a>
-                    <span class="badge badge-primary badge-pill">34</span>
+                    <div class="col-md-6 col-xs-6"><a href="#">Hangover 2</a></div>
+                    <div class="col-md-5 col-xs-5"><a href="#" class="btn btn-info" role="button">Watched</a></div>
+                    <div class="col-md-1 col-xs-1"><a href="#" class="btn btn-danger" role="button">X</a></div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                    <a href="#">Fantasy</a>
-                    <span class="badge badge-primary badge-pill">55</span>
+                    <div class="col-md-6 col-xs-6"><a href="#">Grown Ups</a></div>
+                    <div class="col-md-5 col-xs-5"><a href="#" class="btn btn-info" role="button">Watched</a></div>
+                    <div class="col-md-1 col-xs-1"><a href="#" class="btn btn-danger" role="button">X</a></div>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                    <a href="#">Horror</a>
-                    <span class="badge badge-primary badge-pill">3</span>
+                    <div class="col-md-6 col-xs-6"><a href="#">Mr. Bean's Holiday</a></div>
+                    <div class="col-md-5 col-xs-5"><a href="#" class="btn btn-info" role="button">Watched</a></div>
+                    <div class="col-md-1 col-xs-1"><a href="#" class="btn btn-danger" role="button">X</a></div>
                 </li>
             </ul>
+
+            <a href="createfilm.html" class="btn btn-info btn-lg" role="button" style="margin-top: 10px"
+               aria-pressed="true">Add</a>
         </div>
 
         <div class="col-2"></div>
 
-        <div id="actorsdiv" class="col-5">
-            <h1>Actors</h1>
-            <table class="table table-borderless">
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td><a href="actor.html">Dwayne Johnson (példa)</a></td>
-                    <td>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="#">Kevin Hart</a></td>
-                    <td>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="#">Angelina Jolie</a></td>
-                    <td>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="#">Leonardo DiCaprio</a></td>
-                    <td>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-            </table>
+        <div class="col-5">
+            <h1>Watched</h1>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">&nbsp;</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    <a href="#">American Pie</a>
+                    <a href="#" class="btn btn-danger" role="button">X</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    <a href="#">The Internship</a>
+                    <a href="#" class="btn btn-danger" role="button">X</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    <a href="#">Ted</a>
+                    <a href="#" class="btn btn-danger" role="button">X</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    <a href="#">The Pink Panther</a>
+                    <a href="#" class="btn btn-danger" role="button">X</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    <a href="#">Horrible Bosses</a>
+                    <a href="#" class="btn btn-danger" role="button">X</a>
+                </li>
+            </ul>
 
-            <a href="createactor.html" class="btn btn-info btn-lg top" role="button"
+            <a href="createfilm.html" class="btn btn-info btn-lg" role="button" style="margin-top: 10px"
                aria-pressed="true">Add</a>
         </div>
 
