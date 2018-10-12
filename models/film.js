@@ -12,13 +12,17 @@ var Film = db.model('Film', {
     comment: String,
     rating: Number,
     coverurl: String,
-    seen: {
+    watched: {
         type: Number,
         default: 0
     },
-    _assignedto: {
+    _user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    _category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
     }
 });
 
