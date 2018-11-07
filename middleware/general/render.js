@@ -6,7 +6,7 @@
 module.exports = function (objrepo, viewName) {
 
     return function (req, res) {
-        res.render(viewName, res.tpl);
+        res.render(viewName, res.locals);
     };
 
 };

@@ -1,0 +1,61 @@
+<%- include('header') %>
+<link href="/css/lists.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container toprow">
+    <div class="row">
+        <div class="col-md-11 col-11"></div>
+        <div class="col-md-1 col-1">
+            <a href="/logout" class="btn btn-info btn-lg top" role="button"
+               aria-pressed="true">Logout</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="container lists">
+
+    <div class="row">
+
+        <div id="categorydiv" class="col-5">
+            <h1>Film categories</h1>
+            <ul class="list-group ">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">&nbsp;</li>
+                <% categories.forEach(function(category){ %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                        <a href="/films/<%= category.id%>" ><%=category.name %></a>
+                        <span class="badge badge-primary badge-pill"><%= category.filmnumber %></span>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="col-2"></div>
+
+        <div id="actorsdiv" class="col-5">
+            <h1>Actors</h1>
+            <table class="table table-borderless">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <% actors.forEach(function(actor){ %>
+                <tr>
+                    <td><a href="/actor/<%= actor.id %>"><%= actor.name %></a></td>
+                    <td>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <% }); %>
+            </table>
+
+            <a href="/actors/new" class="btn btn-info btn-lg top" role="button"
+               aria-pressed="true">Add</a>
+        </div>
+
+
+    </div>
+</div>
+
+<%- include('footer') %>

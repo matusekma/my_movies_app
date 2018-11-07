@@ -1,0 +1,63 @@
+<%- include('header') %>
+<link href="/css/actor.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container toprow">
+    <div class="row">
+        <div class="col-md-11 col-11"></div>
+        <div class="col-md-1 col-1">
+            <a href="/logout" class="btn btn-info btn-lg top" role="button"
+               aria-pressed="true">Logout</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-5">
+
+            <h1><%= actor.name %></h1>
+            <b>Birth year:</b> <%= actor.birthYear %>
+            <br>
+            <br>
+
+            <b>Nationality:</b> <%= actor.nationality %>
+            <br>
+            <br>
+            <b>Comment:</b>
+            <p><%= actor.comment %></p>
+
+            <br>
+            <b>Description:</b>
+            <p><%= actor.description %></p>
+
+            <b>Movies:</b>
+            <br>
+            <% actor._films.forEach(function(film){ %>
+                <a href="/films/<%= film.category.id %>/<%= film.id %>"><%= film.name %></a>
+                <br>
+            <% }); %>
+            <br>
+            <br>
+            <div class="btn-group">
+                <a class="btn btn-lg btn-info" href="/actor/<%= actor._id%>/edit" role="button" style="margin-right: 10%">Modify</a>
+                <a class="btn btn-lg btn-info" href="/lists" role="button">Back</a>
+            </div>
+
+        </div>
+
+        <div class="col-2"></div>
+
+        <div class="col-5">
+            <a href="https://placeholder.com"><img src="https://via.placeholder.com/350x350"></a>
+        </div>
+
+
+    </div>
+</div>
+
+<%- include('footer') %>

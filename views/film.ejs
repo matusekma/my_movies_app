@@ -1,0 +1,47 @@
+<%- include('header') %>
+<link href="/css/film.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container toprow">
+    <div class="row">
+        <div class="col-md-11 col-11"></div>
+        <div class="col-md-1 col-1">
+            <a href="/logout" class="btn btn-info btn-lg top" role="button"
+               aria-pressed="true">Logout</a>
+        </div>
+    </div>
+
+</div>
+
+<!--Film (Title, Year, Director, Category, Description, Length, Comment, Rating, Watched, UserId)-->
+<div class="container text-center">
+    <h1><%= film.title%></h1>
+    <b>Release date:</b> <%= film.year %>
+    <b>Category:</b> <%= film.category %>
+    <br>
+    <br>
+    <b>Description:</b>
+    <p><%= film.description %></p>
+
+    <b>Length:</b>
+    <%= film.length %> min
+    <br>
+    <br>
+    <b>Comment:</b>
+    <br>
+    <p><%= film.comment %></p>
+
+    <b>Rating:</b> <%= film.rating %>/5
+    <br>
+    <br>
+    <div class="btn-group-vertical">
+        <a class="btn btn-lg btn-info" href="/film/<%= film.id %>/edit" role="button" style="margin-bottom: 10%">Modify</a>
+        <a class="btn btn-lg btn-info" href="/films/<%= categoryid%>" role="button">Back</a>
+    </div>
+
+
+</div>
+
+<%- include('footer') %>

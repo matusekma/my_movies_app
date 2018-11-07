@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MovieDB</title>
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/forgot.css">
+<%- include('header') %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/forgot.css">
 
 </head>
 <body>
@@ -20,15 +14,16 @@
                     <div class="text-center">
                         <h3><i class="fa fa-lock fa-4x"></i></h3>
                         <h2 class="text-center">Forgot Password?</h2>
-                        <p>You can reset your password here. <br> Your new password will be sent to your email address.</p>
+                        <p>You can reset your password here. <br> Your new password will be sent to your email address.
+                        </p>
                         <div class="panel-body">
 
-                            <form id="register-form" role="form" action="index.html" autocomplete="off" class="form" >
+                            <form id="register-form" role="form" action="/" autocomplete="off" class="form">
 
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i
-                                                class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                                    class="glyphicon glyphicon-envelope color-blue"></i></span>
                                         <input id="email" name="email" placeholder="Email address" class="form-control"
                                                type="email" required>
                                     </div>
@@ -51,7 +46,4 @@
     </div>
 </div>
 
-<script src="js/jquery-3.3.1.js"></script>
-<script src="js/bootstrap.js"></script>
-</body>
-</html>
+<%- include('footer') %>

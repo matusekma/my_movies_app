@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MovieDB</title>
-
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/registerlogin.css">
+<%- include('header') %>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/registerlogin.css">
 </head>
 <body>
 
 
 <div class="container">
-    <a href="index.html" class="btn btn-info btn-lg toprightbutton" role="button"
+    <a href="/" class="btn btn-info btn-lg toprightbutton" role="button"
        aria-pressed="true">Login</a>
 
     <div class="text-center">
@@ -32,7 +24,7 @@
 
             <div class="form-group">
                 <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required >
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
             </div>
 
             <div class="form-group">
@@ -45,8 +37,4 @@
     </div>
 
 </div>
-
-<script src="js/jquery-3.3.1.js"></script>
-<script src="js/bootstrap.js"></script>
-</body>
-</html>
+<%- include('footer') %>

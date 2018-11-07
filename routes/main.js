@@ -5,13 +5,16 @@ const redirectMW = require('../middleware/general/redirect');
 const renderMW = require('../middleware/general/render');
 
 const getActorMW = require('../middleware/actor/getActor');
+const getActorsMW = require('../middleware/actor/getActors');
 const deleteActorMW = require('../middleware/actor/deleteActor');
 const saveActorMW = require('../middleware/actor/saveActor');
-const getCategoriesActorsMW = require('../middleware/actor/getCategoriesActors');
+const getCategoriesMW = require('../middleware/actor/getCategories');
 
 const getFilmMW = require('../middleware/film/getFilm');
 const getCategoryMW = require('../middleware/film/getCategory');
-const getFilmsByCategoryMW = require('../middleware/film/getFilmsByCategory');
+const getFilmsByCategoryMW = require('../middleware/film/getWatchedFilmsByCategory');
+const getNotWatchedFilmsByCategoryMW = require('../middleware/film/getNotWatchedFilmsByCategory');
+const getWatchedFilmsByCategoryMW = require('../middleware/film/getWatchedFilmsByCategory');
 const saveFilmMW = require('../middleware/film/saveFilm');
 const deleteFilmMW = require('../middleware/film/deleteFilm');
 const setFilmAsWatchedMW = require('../middleware/film/setFilmAsWatched');
@@ -20,18 +23,18 @@ const checkForgotPassMW = require('../middleware/user/checkForgotPass');
 const validateLoginMW = require('../middleware/user/validateLogin');
 const validateRegistrationMW = require('../middleware/user/validateRegistration');
 
-/*var userModel = require('../models/user');
+var userModel = require('../models/user');
 var filmModel = require('../models/film');
 var actorModel = require('../models/actor');
-var categoryModel = require('../models/category');*/
+var categoryModel = require('../models/category');
 
 module.exports = function (app) {
 
     var objectRepository = {
-        /*userModel: userModel,
+        userModel: userModel,
         filmModel: filmModel,
         actorModel: actorModel,
-        categoryModel: categoryModel*/
+        categoryModel: categoryModel
     };
 
     app.get('/',
@@ -41,103 +44,110 @@ module.exports = function (app) {
     app.use('/login',
         invAuthMW(objectRepository),
         validateLoginMW(objectRepository),
-        renderMW(objectRepository, 'index.html')
+        renderMW(objectRepository, 'login')
     );
 
     app.get('/logout',
         logoutMW(objectRepository),
-        renderMW(objectRepository, 'logout.html')
+        renderMW(objectRepository, 'logout')
     );
 
     app.use('/forgot',
         invAuthMW(objectRepository),
         checkForgotPassMW(objectRepository),
-        renderMW(objectRepository, 'forgot.html')
+        renderMW(objectRepository, 'forgot')
     );
 
     app.use('/register',
         invAuthMW(objectRepository),
         validateRegistrationMW(objectRepository),
-        renderMW(objectRepository, 'register.html')
+        renderMW(objectRepository, 'register')
     );
 
     app.get('/lists',
         authMW(objectRepository),
-        getCategoriesActorsMW(objectRepository),
-        renderMW(objectRepository, 'lists.html')
+        getCategoriesMW(objectRepository),
+        getActorsMW(objectRepository),
+        renderMW(objectRepository, 'lists')
     );
 
     app.get('/actor/:actorid/del',
         authMW(objectRepository),
         getActorMW(objectRepository),
         deleteActorMW(objectRepository),
-        renderMW(objectRepository, 'lists.html')
+        function (req, res, next) {
+            return res.redirect('/lists');
+        }
     );
 
     app.use('/actors/new',
         authMW(objectRepository),
         saveActorMW(objectRepository),
-        renderMW(objectRepository, 'creatactor.html')
+        renderMW(objectRepository, 'createactor')
     );
 
     app.get('/actor/:actorid',
         authMW(objectRepository),
         getActorMW(objectRepository),
-        renderMW(objectRepository, 'actor.html')
+        renderMW(objectRepository, 'actor')
     );
 
     app.use('/actor/:actorid/edit',
         authMW(objectRepository),
         getActorMW(objectRepository),
         saveActorMW(objectRepository),
-        renderMW(objectRepository, 'modifyactor.html')
+        renderMW(objectRepository, 'modifyactor')
     );
 
     app.get('/films/:categoryid',
         authMW(objectRepository),
         getCategoryMW(objectRepository),
-        getFilmsByCategoryMW(objectRepository),
-        renderMW(objectRepository, 'filmlist.html')
+        getWatchedFilmsByCategoryMW(objectRepository),
+        getNotWatchedFilmsByCategoryMW(objectRepository),
+        renderMW(objectRepository, 'filmlist')
     );
 
     app.get('/films/:categoryid/:filmid/del',
         authMW(objectRepository),
         getFilmMW(objectRepository),
         deleteFilmMW(objectRepository),
-        renderMW(objectRepository, 'filmlist.html')
+        function (req, res, next) {
+            return res.redirect('/films/' + req.param.categoryid);
+        }
     );
 
     app.get('/films/:categoryid/:filmid/watch',
         authMW(objectRepository),
         getFilmMW(objectRepository),
         setFilmAsWatchedMW(objectRepository),
-        saveFilmMW(objectRepository),
-        renderMW(objectRepository, 'filmlist.html')
+        function (req, res, next) {
+            return res.redirect('/films/' + req.param.categoryid);
+        }
     );
 
     app.use('/films/:categoryid/new',
         authMW(objectRepository),
         saveFilmMW(objectRepository),
-        renderMW(objectRepository, 'createfilm.html')
+        renderMW(objectRepository, 'createfilm')
     );
 
     app.use('/films/:categoryid/new/watched',
         authMW(objectRepository),
         saveFilmMW(objectRepository),
-        renderMW(objectRepository, 'createfilm.html')
+        renderMW(objectRepository, 'createfilm')
     );
 
-    app.get('/film/:filmid',
+    app.get('/film/:categoryid/:filmid',
         authMW(objectRepository),
         getFilmMW(objectRepository),
-        renderMW(objectRepository, 'film.html')
+        renderMW(objectRepository, 'film')
     );
 
-    app.use('/film/:filmid/edit',
+    app.use('/film/:categoryid/:filmid/edit',
         authMW(objectRepository),
         getFilmMW(objectRepository),
         saveFilmMW(objectRepository),
-        renderMW(objectRepository, 'modifyfilm.html')
+        renderMW(objectRepository, 'modifyfilm')
     );
 
-}
+};

@@ -1,5 +1,5 @@
 
-.formcontainer, .toprow {
+.container {
     margin: auto auto 10px;
 }
 
@@ -15,7 +15,7 @@ label {
     font-weight: bold;
 }
 
-button {
+.btn {
     margin-bottom: 10%;
 }
 

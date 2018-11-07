@@ -2,13 +2,14 @@ var Schema = require('mongoose').Schema;
 var db = require('../config/db');
 
 
-var Actor = db.model('Film', {
+var Actor = db.model('Actor', {
     name: String,
-    birthyear: Number,
+    birthYear: Number,
     nationality: String,
     comment: String,
     description: String,
-    picurl: String
+    picID: String,
+    _films:  [{ type: Schema.Types.ObjectId, ref: 'Film' }]
 });
 
 module.exports = Actor;

@@ -6,6 +6,7 @@
 module.exports = function (objrepo) {
 
     return function (req, res, next) {
+        res.locals.categoryid = req.params.categoryid;
         return next();
     };
 
