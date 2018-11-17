@@ -1,0 +1,11 @@
+<% if (error.length > 0) { %>
+    <div class="container w-75 mt-2">
+
+        <ul class="list-group list-group-flush">
+            <% error.forEach(function(e){ %>
+                <li class="list-group-item list-group-item-danger"><%= e %></li>
+            <% }); %>
+        </ul>
+
+    </div>
+<% } %>

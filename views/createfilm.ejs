@@ -15,7 +15,7 @@
 
 <div class="container formcontainer">
     <div class="text-center">
-        <form method="POST">
+        <form method="POST" id="filmform">
             <h1>Add film</h1>
             <br>
             <div class="form-group">
@@ -25,13 +25,20 @@
 
             <div class="form-group">
                 <label for="filmYear" class="col-form-label">Release year</label>
-                <input type="number" min="1900" max="2099" step="1" value="2018" class="form-control" id="filmYear" name="year"
+                <input type="number" min="1900" max="2099" step="1" value="2018" class="form-control" id="filmYear"
+                       name="year"
                        required>
             </div>
 
             <div class="form-group">
-                <label for="filmCategory" class="col-form-label">Director</label>
-                <input type="text" class="form-control" id="filmCategory" name="director" required>
+                <label for="filmDirector" class="col-form-label">Director</label>
+                <input type="text" class="form-control" id="filmDirector" name="director" required>
+            </div>
+
+            <div class="form-group">
+                <label for="filmLength" class="col-form-label">Length</label>
+                <input type="number" min="0" max="600" step="1" class="form-control" id="filmLength"
+                       name="length" required>
             </div>
 
             <div class="form-group">
@@ -44,9 +51,20 @@
                 <textarea class="form-control" id="actorComment" name="comment"></textarea>
             </div>
 
+            <div class="form-group">
+                <label for="filmRating" class="col-form-label">Rating</label>
+                <select id="filmRating" name="rating" form="filmform">
+                    <% for(let i = 5; i >= 0; i -= 0.5) { %>
+                        <option value="<%= i %>">
+                            <%= i %>
+                        </option>
+                    <% } %>
+                </select>
+            </div>
+
             <div class="btn-group-vertical">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
-                <a class="btn btn-lg btn-primary btn-block" href="/films/<%= categoryid%>" role="button">Back</a>
+                <a class="btn btn-lg btn-primary btn-block" href="/films/<%= categoryid %>" role="button">Back</a>
             </div>
 
         </form>

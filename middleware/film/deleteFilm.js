@@ -13,7 +13,7 @@ module.exports = function (objrepo) {
                 return next(err);
             }
 
-            return res.redirect('/films/' + res.tpl.film._category.id);
+            return res.redirect('/films/' + res.locals.film._category);
         });
     };
 

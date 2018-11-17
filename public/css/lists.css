@@ -1,19 +1,47 @@
+body, html {
+    height: 100%;
+}
+
 .lists {
     margin: 3% auto;
+    height: 50%;
 }
 
-.toprow{
-    margin-top: 3%;
+.lists div {
+    max-height: 100%;
 }
 
-body, html {
-    width: 100%;
+.addactorbtn {
+    margin-bottom: 10px;
 }
 
-.backbutton {
-    margin-top: 1rem;
-    margin-left: 10%;
+#backbutton {
+    display: block;
+    width: fit-content;
+    margin-top: 2rem;
 }
+
+#category {
+    margin-top: 2rem;
+}
+
+.logoutbutton {
+    margin-top: 2rem;
+}
+
+.filmlist, .actorlist {
+    overflow: auto;
+    margin-top: 3px;
+    padding-top: 0;
+    padding-right: 10px;
+}
+
+/*.categorylist {
+     overflow: auto;
+     margin-top: 3px;
+     padding-top: 0;
+     padding-right: 10px;
+ }*/
 
 
 

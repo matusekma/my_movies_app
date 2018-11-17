@@ -9,28 +9,27 @@ const getActorsMW = require('../middleware/actor/getActors');
 const deleteActorMW = require('../middleware/actor/deleteActor');
 const saveActorMW = require('../middleware/actor/saveActor');
 const getCategoriesMW = require('../middleware/actor/getCategories');
+const savePictureMW = require('../middleware/actor/savePicture');
 
 const getFilmMW = require('../middleware/film/getFilm');
 const getCategoryMW = require('../middleware/film/getCategory');
-const getFilmsByCategoryMW = require('../middleware/film/getWatchedFilmsByCategory');
 const getNotWatchedFilmsByCategoryMW = require('../middleware/film/getNotWatchedFilmsByCategory');
 const getWatchedFilmsByCategoryMW = require('../middleware/film/getWatchedFilmsByCategory');
 const saveFilmMW = require('../middleware/film/saveFilm');
 const deleteFilmMW = require('../middleware/film/deleteFilm');
 const setFilmAsWatchedMW = require('../middleware/film/setFilmAsWatched');
 
-const checkForgotPassMW = require('../middleware/user/checkForgotPass');
 const validateLoginMW = require('../middleware/user/validateLogin');
 const validateRegistrationMW = require('../middleware/user/validateRegistration');
 
-var userModel = require('../models/user');
-var filmModel = require('../models/film');
-var actorModel = require('../models/actor');
-var categoryModel = require('../models/category');
+const userModel = require('../models/user');
+const filmModel = require('../models/film');
+const actorModel = require('../models/actor');
+const categoryModel = require('../models/category');
 
 module.exports = function (app) {
 
-    var objectRepository = {
+    const objectRepository = {
         userModel: userModel,
         filmModel: filmModel,
         actorModel: actorModel,
@@ -50,12 +49,6 @@ module.exports = function (app) {
     app.get('/logout',
         logoutMW(objectRepository),
         renderMW(objectRepository, 'logout')
-    );
-
-    app.use('/forgot',
-        invAuthMW(objectRepository),
-        checkForgotPassMW(objectRepository),
-        renderMW(objectRepository, 'forgot')
     );
 
     app.use('/register',
@@ -82,6 +75,7 @@ module.exports = function (app) {
 
     app.use('/actors/new',
         authMW(objectRepository),
+        //savePictureMW(objectRepository),
         saveActorMW(objectRepository),
         renderMW(objectRepository, 'createactor')
     );
@@ -112,7 +106,7 @@ module.exports = function (app) {
         getFilmMW(objectRepository),
         deleteFilmMW(objectRepository),
         function (req, res, next) {
-            return res.redirect('/films/' + req.param.categoryid);
+            return res.redirect('/films/' + req.params.categoryid);
         }
     );
 
@@ -121,17 +115,11 @@ module.exports = function (app) {
         getFilmMW(objectRepository),
         setFilmAsWatchedMW(objectRepository),
         function (req, res, next) {
-            return res.redirect('/films/' + req.param.categoryid);
+            return res.redirect('/films/' + req.params.categoryid);
         }
     );
 
-    app.use('/films/:categoryid/new',
-        authMW(objectRepository),
-        saveFilmMW(objectRepository),
-        renderMW(objectRepository, 'createfilm')
-    );
-
-    app.use('/films/:categoryid/new/watched',
+    app.use('/films/:categoryid/new/:watched',
         authMW(objectRepository),
         saveFilmMW(objectRepository),
         renderMW(objectRepository, 'createfilm')

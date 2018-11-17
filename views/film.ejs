@@ -19,9 +19,12 @@
 <div class="container text-center">
     <h1><%= film.title%></h1>
     <b>Release date:</b> <%= film.year %>
-    <b>Category:</b> <%= film.category %>
+    <b>Category:</b> <%= film._category.name %>
     <br>
     <br>
+    <b>Director:</b>
+    <p><%= film.director %></p>
+
     <b>Description:</b>
     <p><%= film.description %></p>
 
@@ -33,12 +36,18 @@
     <br>
     <p><%= film.comment %></p>
 
-    <b>Rating:</b> <%= film.rating %>/5
+    <b>Rating:</b>
+    <% if(film.rating !== null) {%>
+        <%= film.rating %>/5
+    <%} else {%>
+        Not yet rated.
+    <%}%>
+
     <br>
     <br>
     <div class="btn-group-vertical">
-        <a class="btn btn-lg btn-info" href="/film/<%= film.id %>/edit" role="button" style="margin-bottom: 10%">Modify</a>
-        <a class="btn btn-lg btn-info" href="/films/<%= categoryid%>" role="button">Back</a>
+        <a class="btn btn-lg btn-info" href="/film/<%= film._category.id%>/<%= film.id %>/edit" role="button" style="margin-bottom: 10%">Modify</a>
+        <a class="btn btn-lg btn-info" href="/films/<%= film._category.id%>" role="button">Back</a>
     </div>
 
 

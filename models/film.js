@@ -1,9 +1,8 @@
-var Schema = require('mongoose').Schema;
-var db = require('../config/db');
+const Schema = require('mongoose').Schema;
+const db = require('../config/db');
 
 
-
-var Film = db.model('Film', {
+const Film = db.model('Film', {
     title: String,
     year: Number,
     director: String,
@@ -11,7 +10,6 @@ var Film = db.model('Film', {
     description: String,
     comment: String,
     rating: Number,
-    coverPath: String,
     watched: {
         type: Number,
         default: 0

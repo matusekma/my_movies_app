@@ -4,19 +4,16 @@
 </head>
 <body>
 
-<a href="/lists" class="btn btn-info backbutton" role="button"
-   aria-pressed="true">Back</a>
-
-<div class="container toprow">
+<div class="container">
 
     <div class="row">
         <div class="col-md-1 col-1">
-            <h1><%= category.name %></h1>
+            <h1 id="category"><%= category.name %></h1>
         </div>
 
         <div class="col-md-10 col-10"></div>
         <div class="col-md-1 col-1">
-            <a href="/logout" class="btn btn-info btn-lg top" role="button"
+            <a href="/logout" class="btn btn-info btn-lg logoutbutton" role="button"
                aria-pressed="true">Logout</a>
         </div>
     </div>
@@ -27,41 +24,47 @@
 
         <div class="col-5">
             <h1>To be watched</h1>
-            <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center border-0">&nbsp;</li>
-                <% notWatchedFilms.forEach(function(film) { %>
-                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                        <div class="col-md-6 col-xs-6"><a href="/film/<%= film.id %>"><%= film.title %></a></div>
-                        <div class="col-md-5 col-xs-5"><a href="#" class="btn btn-info" role="button">Watched</a></div>
-                        <div class="col-md-1 col-xs-1"><a href="#" class="btn btn-danger" role="button">X</a></div>
-                    </li>
-                <% }); %>
-            </ul>
+            <div class="filmlist">
+                <ul class="list-group">
+                    <% notWatchedFilms.forEach(function(film) { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                            <div class="col-md-6 col-xs-6"><a href="/film/<%= category.id %>/<%= film.id %>"><%= film.title %></a></div>
+                            <div class="col-md-5 col-xs-5"><a href="/films/<%= category.id %>/<%= film.id %>/watch" class="btn btn-info" role="button">Watched</a>
+                            </div>
+                            <div class="col-md-1 col-xs-1"><a href="/films/<%= category.id %>/<%= film.id %>/del" class="btn btn-danger" role="button">X</a></div>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
 
-            <a href="/films/<%= category.id %>/new" class="btn btn-info btn-lg" role="button" style="margin-top: 10px"
+            <a href="/films/<%= category.id %>/new/0" class="btn btn-info btn-lg" role="button" style="margin-top: 10px"
                aria-pressed="true">Add</a>
+
+            <a href="/lists" id="backbutton" class="btn btn-info" role="button"
+               aria-pressed="true">Back</a>
         </div>
 
         <div class="col-2"></div>
 
         <div class="col-5">
             <h1>Watched</h1>
-            <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center border-0">&nbsp;</li>
-                <% watchedFilms.forEach(function(film) { %>
-                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                        <a href="/film/<%= film.id %>"><%= film.title %></a>
-                        <a href="#" class="btn btn-danger" role="button">X</a>
-                    </li>
-                <% }); %>
-            </ul>
+            <div class=" filmlist">
+                <ul class="list-group">
+                    <% watchedFilms.forEach(function(film) { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                            <a href="/film/<%= category.id %>/<%= film.id %>"><%= film.title %></a>
+                            <a href="/films/<%= category.id %>/<%= film.id %>/del" class="btn btn-danger" role="button">X</a>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
 
-            <a href="/films/<%= category.id %>/new" class="btn btn-info btn-lg" role="button" style="margin-top: 10px"
+            <a href="/films/<%= category.id %>/new/1" class="btn btn-info btn-lg" role="button" style="margin-top: 10px"
                aria-pressed="true">Add</a>
         </div>
 
-
     </div>
+
 </div>
 
 <%- include('footer') %>

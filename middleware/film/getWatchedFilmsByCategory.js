@@ -10,7 +10,7 @@ module.exports = function (objrepo) {
 
     return function (req, res, next) {
         // not watched films
-        filmModel.find({watched: 1, _category: req.params.categoryid}).exec(function (err, results) {
+        filmModel.find({watched: 1, _category: req.params.categoryid, _user: req.session.userid}).exec(function (err, results) {
             if ((err) || (!results)) {
                 return res.redirect('/lists');
             }
@@ -18,27 +18,6 @@ module.exports = function (objrepo) {
             res.locals.watchedFilms = results;
             return next();
         });
-        /*res.locals.watchedFilms = [
-            {
-                id: 1,
-                title: 'Jumanji',
-                category: {id: 2, name: 'Comedy', filmnumber: 15}
-            }
-        ];
-
-        res.locals.notWatchedFilms = [
-            {
-                id: 2,
-                title: 'Baywatch',
-                category: {id: 2, name: 'Comedy', filmnumber: 15}
-            },
-            {
-                id: 3,
-                title: 'Rampage',
-                category: {id: 2, name: 'Comedy', filmnumber: 15}
-            }
-        ];
-        return next();*/
     };
 
 };

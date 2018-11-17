@@ -1,4 +1,4 @@
-var requireOption = require('../common').requireOption;
+const requireOption = require('../common').requireOption;
 /**
  * Sets the watched parameter of the film given
  * with its filmid
@@ -24,7 +24,7 @@ module.exports = function (objrepo) {
                 return next(err);
             }
 
-            return res.redirect('/films/' + result._category.id);
+            return next();
         })
     };
 

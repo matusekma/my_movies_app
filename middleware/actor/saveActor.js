@@ -18,9 +18,9 @@ module.exports = function (objrepo) {
     return function (req, res, next) {
 
         if ((typeof req.body.name === 'undefined') ||
-            (typeof req.body.birthYear === 'undefined')||
-            (typeof req.body.nationality === 'undefined')||
-            (typeof req.body.comment === 'undefined')||
+            (typeof req.body.birthYear === 'undefined') ||
+            (typeof req.body.nationality === 'undefined') ||
+            (typeof req.body.comment === 'undefined') ||
             (typeof req.body.description === 'undefined')) {
             return next();
         }
@@ -37,6 +37,10 @@ module.exports = function (objrepo) {
         actor.nationality = req.body.nationality;
         actor.comment = req.body.comment;
         actor.description = req.body.description;
+        actor._user = req.session.userid;
+        if(typeof res.locals.filename !== 'undefined') {
+            actor.picName = res.locals.filename;
+        }
 
         actor.save(function (err, result) {
             if (err) {

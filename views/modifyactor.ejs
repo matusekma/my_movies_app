@@ -36,16 +36,16 @@
 
             <div class="form-group">
                 <label for="filmDescription" class="col-form-label">Description</label>
-                <textarea class="form-control" id="filmDescription" name="description"></textarea>
+                <textarea class="form-control" id="filmDescription" name="description"> <%=(typeof actor !== undefined) ? actor.description : ''%> </textarea>
             </div>
 
             <div class="form-group">
                 <label for="actorComment" class="col-form-label">Comment</label>
-                <textarea class="form-control" id="actorComment" name="comment"> <%=(typeof actor !== undefined) ? actor.name : ''%></textarea>
+                <textarea class="form-control" id="actorComment" name="comment"> <%=(typeof actor !== undefined) ? actor.comment : ''%></textarea>
             </div>
             <div class="btn-group-vertical">
                 <input class="btn btn-lg btn-primary btn-block" type="submit" value="Save"/>
-                <a class="btn btn-lg btn-primary btn-block" href="/lists" role="button">Back</a>
+                <a class="btn btn-lg btn-primary btn-block" href="/actor/<%= actor.id%>" role="button">Back</a>
             </div>
 
         </form>

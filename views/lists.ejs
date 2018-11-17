@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-11 col-11"></div>
         <div class="col-md-1 col-1">
-            <a href="/logout" class="btn btn-info btn-lg top" role="button"
+            <a href="/logout" class="btn btn-info btn-lg logoutbutton" role="button"
                aria-pressed="true">Logout</a>
         </div>
     </div>
@@ -18,44 +18,43 @@
 
     <div class="row">
 
-        <div id="categorydiv" class="col-5">
+        <div class="col-5">
             <h1>Film categories</h1>
-            <ul class="list-group ">
-                <li class="list-group-item d-flex justify-content-between align-items-center border-0">&nbsp;</li>
-                <% categories.forEach(function(category){ %>
-                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                        <a href="/films/<%= category.id%>" ><%=category.name %></a>
-                        <span class="badge badge-primary badge-pill"><%= category.filmnumber %></span>
-                    </li>
-                <% }); %>
-            </ul>
+                <ul class="list-group d-flex flex-row flex-wrap">
+                    <% categories.forEach(function(category){ %>
+                        <li class="list-group-item border-0 w-50">
+                            <a href="/films/<%= category.id %>"><%= category.name %></a>
+                            <span class="badge badge-primary badge-pill"><%= category.filmnumber %></span>
+                        </li>
+                    <% }); %>
+                </ul>
         </div>
 
         <div class="col-2"></div>
 
-        <div id="actorsdiv" class="col-5">
+        <div class="col-5">
             <h1>Actors</h1>
-            <table class="table table-borderless">
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <% actors.forEach(function(actor){ %>
-                <tr>
-                    <td><a href="/actor/<%= actor.id %>"><%= actor.name %></a></td>
-                    <td>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <% }); %>
-            </table>
+            <div class="actorlist">
+                <table class="table table-borderless">
+                    <% actors.forEach(function(actor){ %>
+                        <tr>
+                            <td><a href="/actor/<%= actor.id %>"><%= actor.name %></a></td>
+                            <td>
+                                <a href="/actor/<%= actor.id %>/del" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
 
-            <a href="/actors/new" class="btn btn-info btn-lg top" role="button"
+            <a href="/actors/new" class="btn btn-info btn-lg addactorbtn" role="button"
                aria-pressed="true">Add</a>
         </div>
 
 
     </div>
+
 </div>
+
 
 <%- include('footer') %>

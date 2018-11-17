@@ -11,7 +11,7 @@
        aria-pressed="true">Register</a>
 
     <div class="text-center">
-        <form class="form-signin" action="/lists">
+        <form class="form-signin" method="POST">
 
             <div class="form-group">
                 <i class="fas fa-user fa-7x"></i>
@@ -20,18 +20,19 @@
 
             <div class="form-group">
                 <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
             </div>
 
             <div class="form-group">
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
             </div>
 
             <button id="signin" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 
-            <a href="/forgot" id="forgot">Forgot password?</a>
+            <%- include('error') %>
         </form>
+
     </div>
 
 </div>

@@ -8,7 +8,11 @@ var Actor = db.model('Actor', {
     nationality: String,
     comment: String,
     description: String,
-    picID: String,
+    picName: String,
+    _user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     _films:  [{ type: Schema.Types.ObjectId, ref: 'Film' }]
 });
 

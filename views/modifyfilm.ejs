@@ -15,33 +15,64 @@
 
 <div class="container formcontainer">
     <div class="text-center">
-        <form method="POST">
+        <form method="POST" id="filmform">
             <h1>Modify film</h1>
             <br>
             <div class="form-group">
                 <label for="filmTitle" class="col-sm-3 col-form-label">Title</label>
-                <input type="text" class="form-control" id="filmTitle" name="title" autofocus required>
+                <input type="text" class="form-control" id="filmTitle" name="title"
+                       value="<%= (typeof film !== undefined) ? film.title : '' %>" autofocus required>
             </div>
 
             <div class="form-group">
                 <label for="filmYear" class="col-form-label">Release year</label>
-                <input type="number" min="1900" max="2099" step="1" value="2018" class="form-control" id="filmYear" name="year"
+                <input type="number" min="1900" max="2099" step="1" class="form-control" id="filmYear"
+                       name="year" value="<%= (typeof film !== undefined) ? film.year : '' %>"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="filmDirector" class="col-sm-3 col-form-label">Director</label>
+                <input type="text" class="form-control" id="filmDirector" name="director"
+                       value="<%= (typeof film !== undefined) ? film.director : '' %>" autofocus required>
+            </div>
+
+            <div class="form-group">
+                <label for="filmLength" class="col-form-label">Length</label>
+                <input type="number" min="0" max="600" step="1" class="form-control" id="filmLength"
+                       name="length" value="<%= (typeof film !== undefined) ? film.length : '' %>"
                        required>
             </div>
 
             <div class="form-group">
                 <label for="filmDescription" class="col-form-label">Description</label>
-                <textarea class="form-control" id="filmDescription" name="description"></textarea>
+                <textarea class="form-control" id="filmDescription"
+                          name="description"><%= (typeof film !== undefined) ? film.description : '' %></textarea>
             </div>
 
             <div class="form-group">
-                <label for="actorComment" class="col-form-label">Comment</label>
-                <textarea class="form-control" id="actorComment" name="comment"></textarea>
+                <label for="filmComment" class="col-form-label">Comment</label>
+                <textarea class="form-control" id="filmComment"
+                          name="comment"><%= (typeof film !== undefined) ? film.comment : '' %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="filmRating" class="col-form-label">Rating</label>
+                <select class="form-control" id="filmRating" name="rating" form="filmform">
+                    <% for(let i = 5; i >= 0; i -= 0.5) { %>
+                    <option value="<%= i %>"
+                    <% if( typeof film !== undefined && i === film.rating) { %> selected="selected"
+                            <% } %>
+                    >
+                        <%= i %>
+                    </option>
+                    <% } %>
+                </select>
             </div>
 
             <div class="btn-group-vertical">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
-                <a class="btn btn-lg btn-primary btn-block" href="/lists" role="button">Back</a>
+                <a class="btn btn-lg btn-primary btn-block" href="/film/<%= categoryid %>/<%= film._id%>" role="button">Back</a>
             </div>
 
         </form>

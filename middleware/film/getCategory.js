@@ -7,7 +7,8 @@ var requireOption = require('../common').requireOption;
 
 module.exports = function (objrepo) {
 
-    var categoryModel = requireOption(objrepo, 'categoryModel');
+    const categoryModel = requireOption(objrepo, 'categoryModel');
+
     return function (req, res, next) {
 
         categoryModel.findOne({

@@ -1,4 +1,5 @@
 var express = require('express');
+var multer = require('multer');
 var app = express();
 
 var session = require('express-session');
@@ -23,6 +24,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(function (req, res, next) {
+    res.locals.error = [];
+
+    return next();
+});
 
 require('./routes/main')(app);
 
