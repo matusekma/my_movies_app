@@ -21,28 +21,24 @@
         <div class="col-5">
 
             <h1><%= actor.name %></h1>
-            <b>Birth year:</b> <%= actor.birthYear %>
-            <br>
-            <br>
+            <b class="d-block">Birth year:</b> <%= actor.birthYear %>
 
-            <b>Nationality:</b> <%= actor.nationality %>
-            <br>
-            <br>
-            <b>Comment:</b>
+            <b class="d-block">Nationality:</b> <%= actor.nationality %>
+
+            <b class="d-block">Comment:</b>
             <p><%= actor.comment %></p>
 
-            <br>
             <b>Description:</b>
             <p><%= actor.description %></p>
 
-            <b>Movies:</b>
+            <!--<b>Movies:</b>
             <br>
             <% actor._films.forEach(function(film){ %>
                 <a href="/films/<%= film.category.id %>/<%= film.id %>"><%= film.name %></a>
                 <br>
             <% }); %>
-            <br>
-            <br>
+            -->
+
             <div class="btn-group">
                 <a class="btn btn-lg btn-info" href="/actor/<%= actor._id%>/edit" role="button" style="margin-right: 10%">Modify</a>
                 <a class="btn btn-lg btn-info" href="/lists" role="button">Back</a>
@@ -52,7 +48,7 @@
 
         <div class="col-2"></div>
 
-        <div class="col-5">
+        <div class="col-5 mt-2">
             <img src="/actorpictures/<%= actor.picName%>">
         </div>
 

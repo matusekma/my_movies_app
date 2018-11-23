@@ -32,7 +32,7 @@ const mime = require('mime');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './actorpictures')
+        cb(null, './public/actorpictures')
     },
     filename: function (req, file, cb) {
         cb(null, crypto.createHmac("sha256", file.originalname).digest('hex') + '.' + mime.extension(file.mimetype))

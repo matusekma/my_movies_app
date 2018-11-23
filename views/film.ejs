@@ -28,15 +28,14 @@
     <b>Description:</b>
     <p><%= film.description %></p>
 
-    <b>Length:</b>
+    <b class="d-block">Length:</b>
     <%= film.length %> min
-    <br>
-    <br>
-    <b>Comment:</b>
-    <br>
+
+    <b class="d-block">Comment:</b>
+
     <p><%= film.comment %></p>
 
-    <b>Rating:</b>
+    <b class="d-block">Rating:</b>
     <% if(film.rating !== null) {%>
         <%= film.rating %>/5
     <%} else {%>
