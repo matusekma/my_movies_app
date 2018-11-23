@@ -9,7 +9,6 @@ const getActorsMW = require('../middleware/actor/getActors');
 const deleteActorMW = require('../middleware/actor/deleteActor');
 const saveActorMW = require('../middleware/actor/saveActor');
 const getCategoriesMW = require('../middleware/actor/getCategories');
-const savePictureMW = require('../middleware/actor/savePicture');
 
 const getFilmMW = require('../middleware/film/getFilm');
 const getCategoryMW = require('../middleware/film/getCategory');
@@ -26,6 +25,20 @@ const userModel = require('../models/user');
 const filmModel = require('../models/film');
 const actorModel = require('../models/actor');
 const categoryModel = require('../models/category');
+
+const crypto = require('crypto');
+const multer = require('multer');
+const mime = require('mime');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './actorpictures')
+    },
+    filename: function (req, file, cb) {
+        cb(null, crypto.createHmac("sha256", file.originalname).digest('hex') + '.' + mime.extension(file.mimetype))
+    }
+});
+const upload = multer({ storage: storage });
 
 module.exports = function (app) {
 
@@ -73,9 +86,14 @@ module.exports = function (app) {
         }
     );
 
-    app.use('/actors/new',
+    app.get('/actors/new',
         authMW(objectRepository),
-        //savePictureMW(objectRepository),
+        renderMW(objectRepository, 'createactor')
+    );
+
+    app.post('/actors/new',
+        authMW(objectRepository),
+        upload.single('actorPicture'),
         saveActorMW(objectRepository),
         renderMW(objectRepository, 'createactor')
     );

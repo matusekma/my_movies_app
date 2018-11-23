@@ -1,5 +1,5 @@
 const requireOption = require('../common').requireOption;
-const bcrypt = require('bcrypt');
+const crypto = require("crypto");
 /**
  * Checks user credentials from model
  * if valid - redirects to '/'
@@ -25,17 +25,15 @@ module.exports = function (objrepo) {
                 return next();
             }
 
-            bcrypt.compare(req.body.password, result.password, function(err, eq) {
-                if (!eq)
-                {
-                    res.locals.error.push('Incorrect password!');
-                    return next();
-                }
-                else {
-                    req.session.userid = result._id;
-                    return res.redirect('/');
-                }
-            });
+            if (
+                crypto.createHmac("sha256", req.body.password).digest('hex') !== result.password
+            ) {
+                res.locals.error.push("Incorrect password!");
+                return next();
+            } else {
+                req.session.userid = result._id;
+                return res.redirect("/");
+            }
         });
     };
 

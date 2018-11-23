@@ -38,8 +38,8 @@ module.exports = function (objrepo) {
         actor.comment = req.body.comment;
         actor.description = req.body.description;
         actor._user = req.session.userid;
-        if(typeof res.locals.filename !== 'undefined') {
-            actor.picName = res.locals.filename;
+        if(typeof req.file !== 'undefined') {
+            actor.picName = req.file.filename;
         }
 
         actor.save(function (err, result) {

@@ -1,6 +1,5 @@
 const requireOption = require('../common').requireOption;
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const crypto = require("crypto");
 /**
  * Checks if e-mail address is already registered
  * if not, creates user
@@ -37,12 +36,11 @@ module.exports = function (objrepo) {
             user.name = req.body.name;
             user.email = req.body.email;
 
-            bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-                user.password = hash;
-                user.save(function (err) {
-                    //redirect to /login
-                    return res.redirect('/login');
-                });
+            const hash = crypto.createHmac("sha256", req.body.password).digest('hex');
+            user.password = hash;
+            user.save(function(err) {
+                //redirect to /login
+                return res.redirect("/login");
             });
 
         });
