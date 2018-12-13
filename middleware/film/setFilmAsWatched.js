@@ -7,8 +7,6 @@ const requireOption = require('../common').requireOption;
  */
 
 module.exports = function (objrepo) {
-
-    var filmModel = requireOption(objrepo, 'filmModel');
     
     return function (req, res, next) {
 
